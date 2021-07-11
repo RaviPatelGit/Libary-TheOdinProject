@@ -2,15 +2,31 @@ let divNewBookButton = document.querySelector('.divNewBookButton');
 let submitButton = document.querySelector('#submitButton');
 
 submitButton.addEventListener('click', ()=>{
-    let title = document.querySelector('#title').value;
-    let author = document.querySelector('#author').value;
-    let pages = document.querySelector('#pages').value;
-    let read = document.querySelector('#read').checked;
-    
-    book = new Book(title, author, pages, read)
-    myLibrary.push(book);
-    storeLocalStorage();
-    displayLibrary();
+    let titleHtml = document.getElementById('title');
+    let authorHtml = document.getElementById('author');
+    let pagesHtml = document.getElementById('pages');
+    let read = document.getElementById('read').checked;
+
+    // titleHtml.addEventListener('input',()=>{
+        
+        
+    // })
+
+    if (titleHtml.validity.valid &
+        authorHtml.validity.valid &
+        pagesHtml.validity.valid) {
+            
+            let title = titleHtml.value;
+            let author = authorHtml.value;
+            let pages = pagesHtml.value; 
+            
+            book = new Book(title, author, pages, read)
+            myLibrary.push(book);
+            storeLocalStorage();
+            displayLibrary();
+        }
+
+   
 } );
 
 let myLibrary =[];
